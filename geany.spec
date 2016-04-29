@@ -4,7 +4,7 @@
 #
 Name     : geany
 Version  : 1.27
-Release  : 1
+Release  : 2
 URL      : http://download.geany.org/geany-1.27.tar.gz
 Source0  : http://download.geany.org/geany-1.27.tar.gz
 Summary  : A fast and lightweight IDE using GTK+
