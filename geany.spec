@@ -4,7 +4,7 @@
 #
 Name     : geany
 Version  : 1.27
-Release  : 3
+Release  : 4
 URL      : http://download.geany.org/geany-1.27.tar.gz
 Source0  : http://download.geany.org/geany-1.27.tar.gz
 Summary  : A fast and lightweight IDE using GTK+
@@ -15,7 +15,9 @@ Requires: geany-lib
 Requires: geany-data
 Requires: geany-doc
 Requires: geany-locales
+BuildRequires : doxygen
 BuildRequires : gtk+-dev
+BuildRequires : gtk3-dev
 BuildRequires : intltool
 BuildRequires : perl(XML::Parser)
 
