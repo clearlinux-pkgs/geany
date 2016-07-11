@@ -20,6 +20,7 @@ libgeany.so.0:document_get_current
 libgeany.so.0:document_get_from_page
 libgeany.so.0:document_get_notebook_page
 libgeany.so.0:document_get_status_color
+libgeany.so.0:document_get_type
 libgeany.so.0:document_index
 libgeany.so.0:document_new_file
 libgeany.so.0:document_open_file
@@ -39,6 +40,7 @@ libgeany.so.0:editor_get_eol_char_len
 libgeany.so.0:editor_get_eol_char_mode
 libgeany.so.0:editor_get_eol_char_name
 libgeany.so.0:editor_get_indent_prefs
+libgeany.so.0:editor_get_type
 libgeany.so.0:editor_get_word_at_pos
 libgeany.so.0:editor_goto_pos
 libgeany.so.0:editor_indicator_clear
@@ -51,11 +53,13 @@ libgeany.so.0:editor_set_indent_width
 libgeany.so.0:encodings_convert_to_utf8
 libgeany.so.0:encodings_convert_to_utf8_from_charset
 libgeany.so.0:encodings_get_charset_from_index
+libgeany.so.0:filetype_get_type
 libgeany.so.0:filetypes_detect_from_file
 libgeany.so.0:filetypes_get_display_name
 libgeany.so.0:filetypes_get_sorted_by_name
 libgeany.so.0:filetypes_index
 libgeany.so.0:filetypes_lookup_by_name
+libgeany.so.0:geany_object_get_type
 libgeany.so.0:geany_plugin_register
 libgeany.so.0:geany_plugin_register_full
 libgeany.so.0:geany_plugin_register_proxy
@@ -150,6 +154,7 @@ libgeany.so.0:scintilla_object_get_type
 libgeany.so.0:scintilla_object_new
 libgeany.so.0:scintilla_object_send_message
 libgeany.so.0:scintilla_send_message
+libgeany.so.0:scnotification_get_type
 libgeany.so.0:search_show_find_in_files_dialog
 libgeany.so.0:spawn_async
 libgeany.so.0:spawn_check_command
