@@ -87,8 +87,11 @@ libgeany.so.0:msgwin_switch_tab
 libgeany.so.0:navqueue_goto_line
 libgeany.so.0:plugin_add_toolbar_item
 libgeany.so.0:plugin_builder_connect_signals
+libgeany.so.0:plugin_get_document_data
 libgeany.so.0:plugin_idle_add
 libgeany.so.0:plugin_module_make_resident
+libgeany.so.0:plugin_set_document_data
+libgeany.so.0:plugin_set_document_data_full
 libgeany.so.0:plugin_set_key_group
 libgeany.so.0:plugin_set_key_group_full
 libgeany.so.0:plugin_show_configure
