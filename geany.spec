@@ -6,9 +6,10 @@
 #
 Name     : geany
 Version  : 1.29
-Release  : 7
+Release  : 8
 URL      : http://download.geany.org/geany-1.29.tar.gz
 Source0  : http://download.geany.org/geany-1.29.tar.gz
+Source99 : http://download.geany.org/geany-1.29.tar.gz.sig
 Summary  : A fast and lightweight IDE using GTK+
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ HPND
@@ -20,6 +21,7 @@ Requires: geany-locales
 BuildRequires : doxygen
 BuildRequires : gtk+-dev
 BuildRequires : intltool
+BuildRequires : lxml
 BuildRequires : perl(XML::Parser)
 
 %description
@@ -98,7 +100,7 @@ locales components for the geany package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484145257
+export SOURCE_DATE_EPOCH=1489357087
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -110,6 +112,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1489357087
 rm -rf %{buildroot}
 %make_install
 %find_lang geany
@@ -270,6 +273,8 @@ rm -rf %{buildroot}
 /usr/include/geany/geanyfunctions.h
 /usr/include/geany/geanyplugin.h
 /usr/include/geany/gtkcompat.h
+/usr/include/geany/gtkdoc/geany-gtkdoc.h
+/usr/include/geany/gtkdoc/geany-sciwrappers-gtkdoc.h
 /usr/include/geany/highlighting.h
 /usr/include/geany/keybindings.h
 /usr/include/geany/main.h
