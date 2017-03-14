@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x24CCD8550E5D1CAE (ban@ban.netlib.re)
 #
 Name     : geany
-Version  : 1.29
-Release  : 8
-URL      : http://download.geany.org/geany-1.29.tar.gz
-Source0  : http://download.geany.org/geany-1.29.tar.gz
-Source99 : http://download.geany.org/geany-1.29.tar.gz.sig
+Version  : 1.30
+Release  : 9
+URL      : http://download.geany.org/geany-1.30.tar.gz
+Source0  : http://download.geany.org/geany-1.30.tar.gz
+Source99 : http://download.geany.org/geany-1.30.tar.gz.sig
 Summary  : A fast and lightweight IDE using GTK+
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ HPND
@@ -96,11 +96,11 @@ locales components for the geany package.
 
 
 %prep
-%setup -q -n geany-1.29
+%setup -q -n geany-1.30
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1489357087
+export SOURCE_DATE_EPOCH=1489507647
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -112,7 +112,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1489357087
+export SOURCE_DATE_EPOCH=1489507647
 rm -rf %{buildroot}
 %make_install
 %find_lang geany
@@ -129,6 +129,7 @@ rm -rf %{buildroot}
 /usr/share/applications/geany.desktop
 /usr/share/geany/GPL-2
 /usr/share/geany/colorschemes/alt.conf
+/usr/share/geany/filedefs/filetypes.Arduino.conf
 /usr/share/geany/filedefs/filetypes.CUDA.conf
 /usr/share/geany/filedefs/filetypes.Clojure.conf
 /usr/share/geany/filedefs/filetypes.Cython.conf

@@ -59,6 +59,7 @@ libgeany.so.0:filetypes_get_display_name
 libgeany.so.0:filetypes_get_sorted_by_name
 libgeany.so.0:filetypes_index
 libgeany.so.0:filetypes_lookup_by_name
+libgeany.so.0:geany_api_version
 libgeany.so.0:geany_object_get_type
 libgeany.so.0:geany_plugin_register
 libgeany.so.0:geany_plugin_register_full
