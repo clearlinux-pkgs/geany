@@ -6,7 +6,7 @@
 #
 Name     : geany
 Version  : 1.31
-Release  : 14
+Release  : 15
 URL      : http://download.geany.org/geany-1.31.tar.gz
 Source0  : http://download.geany.org/geany-1.31.tar.gz
 Source99 : http://download.geany.org/geany-1.31.tar.gz.sig
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1500299818
+export SOURCE_DATE_EPOCH=1509380195
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -115,7 +115,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1500299818
+export SOURCE_DATE_EPOCH=1509380195
 rm -rf %{buildroot}
 %make_install
 %find_lang geany
@@ -224,7 +224,6 @@ rm -rf %{buildroot}
 /usr/share/geany/templates/files/main.java
 /usr/share/geany/templates/files/main.py
 /usr/share/geany/templates/files/main.pyc
-/usr/share/geany/templates/files/main.pyo
 /usr/share/geany/templates/files/main.vala
 /usr/share/geany/templates/files/module.erl
 /usr/share/geany/templates/files/program.pas
