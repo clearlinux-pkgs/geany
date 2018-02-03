@@ -6,7 +6,7 @@
 #
 Name     : geany
 Version  : 1.32
-Release  : 19
+Release  : 20
 URL      : http://download.geany.org/geany-1.32.tar.gz
 Source0  : http://download.geany.org/geany-1.32.tar.gz
 Source99 : http://download.geany.org/geany-1.32.tar.gz.sig
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1511101498
+export SOURCE_DATE_EPOCH=1517633032
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -115,7 +115,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1511101498
+export SOURCE_DATE_EPOCH=1517633032
 rm -rf %{buildroot}
 %make_install
 %find_lang geany
@@ -213,6 +213,7 @@ rm -rf %{buildroot}
 /usr/share/geany/templates/bsd
 /usr/share/geany/templates/changelog
 /usr/share/geany/templates/fileheader
+/usr/share/geany/templates/files/__pycache__/main.cpython-36.pyc
 /usr/share/geany/templates/files/file.html
 /usr/share/geany/templates/files/file.php
 /usr/share/geany/templates/files/file.rb
@@ -223,7 +224,6 @@ rm -rf %{buildroot}
 /usr/share/geany/templates/files/main.d
 /usr/share/geany/templates/files/main.java
 /usr/share/geany/templates/files/main.py
-/usr/share/geany/templates/files/main.pyc
 /usr/share/geany/templates/files/main.vala
 /usr/share/geany/templates/files/module.erl
 /usr/share/geany/templates/files/program.pas
