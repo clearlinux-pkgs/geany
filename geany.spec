@@ -6,7 +6,7 @@
 #
 Name     : geany
 Version  : 1.32
-Release  : 20
+Release  : 21
 URL      : http://download.geany.org/geany-1.32.tar.gz
 Source0  : http://download.geany.org/geany-1.32.tar.gz
 Source99 : http://download.geany.org/geany-1.32.tar.gz.sig
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517633032
+export SOURCE_DATE_EPOCH=1517682311
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -115,7 +115,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1517633032
+export SOURCE_DATE_EPOCH=1517682311
 rm -rf %{buildroot}
 %make_install
 %find_lang geany
