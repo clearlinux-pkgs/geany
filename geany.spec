@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCC03633F700990F2 (eht16@fsfe.org)
 #
 Name     : geany
-Version  : 1.32
-Release  : 21
-URL      : http://download.geany.org/geany-1.32.tar.gz
-Source0  : http://download.geany.org/geany-1.32.tar.gz
-Source99 : http://download.geany.org/geany-1.32.tar.gz.sig
+Version  : 1.33
+Release  : 22
+URL      : http://download.geany.org/geany-1.33.tar.gz
+Source0  : http://download.geany.org/geany-1.33.tar.gz
+Source99 : http://download.geany.org/geany-1.33.tar.gz.sig
 Summary  : A fast and lightweight IDE using GTK+
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ HPND
@@ -96,14 +96,14 @@ locales components for the geany package.
 
 
 %prep
-%setup -q -n geany-1.32
+%setup -q -n geany-1.33
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517682311
+export SOURCE_DATE_EPOCH=1522379439
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -115,7 +115,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1517682311
+export SOURCE_DATE_EPOCH=1522379439
 rm -rf %{buildroot}
 %make_install
 %find_lang geany
