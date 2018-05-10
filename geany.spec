@@ -6,7 +6,7 @@
 #
 Name     : geany
 Version  : 1.33
-Release  : 22
+Release  : 23
 URL      : http://download.geany.org/geany-1.33.tar.gz
 Source0  : http://download.geany.org/geany-1.33.tar.gz
 Source99 : http://download.geany.org/geany-1.33.tar.gz.sig
