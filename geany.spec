@@ -6,7 +6,7 @@
 #
 Name     : geany
 Version  : 1.33
-Release  : 23
+Release  : 24
 URL      : http://download.geany.org/geany-1.33.tar.gz
 Source0  : http://download.geany.org/geany-1.33.tar.gz
 Source99 : http://download.geany.org/geany-1.33.tar.gz.sig
@@ -16,10 +16,11 @@ License  : GPL-2.0 GPL-2.0+ HPND
 Requires: geany-bin
 Requires: geany-lib
 Requires: geany-data
-Requires: geany-doc
+Requires: geany-license
 Requires: geany-locales
+Requires: geany-man
+BuildRequires : buildreq-golang
 BuildRequires : doxygen
-BuildRequires : go
 BuildRequires : gtk+-dev
 BuildRequires : intltool
 BuildRequires : lxml
@@ -45,6 +46,8 @@ Some features:
 Summary: bin components for the geany package.
 Group: Binaries
 Requires: geany-data
+Requires: geany-license
+Requires: geany-man
 
 %description bin
 bin components for the geany package.
@@ -73,6 +76,7 @@ dev components for the geany package.
 %package doc
 Summary: doc components for the geany package.
 Group: Documentation
+Requires: geany-man
 
 %description doc
 doc components for the geany package.
@@ -82,9 +86,18 @@ doc components for the geany package.
 Summary: lib components for the geany package.
 Group: Libraries
 Requires: geany-data
+Requires: geany-license
 
 %description lib
 lib components for the geany package.
+
+
+%package license
+Summary: license components for the geany package.
+Group: Default
+
+%description license
+license components for the geany package.
 
 
 %package locales
@@ -95,6 +108,14 @@ Group: Default
 locales components for the geany package.
 
 
+%package man
+Summary: man components for the geany package.
+Group: Default
+
+%description man
+man components for the geany package.
+
+
 %prep
 %setup -q -n geany-1.33
 
@@ -103,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522379439
+export SOURCE_DATE_EPOCH=1532463513
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -115,8 +136,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522379439
+export SOURCE_DATE_EPOCH=1532463513
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/geany
+cp COPYING %{buildroot}/usr/share/doc/geany/COPYING
+cp scintilla/License.txt %{buildroot}/usr/share/doc/geany/scintilla_License.txt
 %make_install
 %find_lang geany
 
@@ -213,7 +237,6 @@ rm -rf %{buildroot}
 /usr/share/geany/templates/bsd
 /usr/share/geany/templates/changelog
 /usr/share/geany/templates/fileheader
-/usr/share/geany/templates/files/__pycache__/main.cpython-36.pyc
 /usr/share/geany/templates/files/file.html
 /usr/share/geany/templates/files/file.php
 /usr/share/geany/templates/files/file.rb
@@ -310,9 +333,8 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/geany.pc
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc /usr/share/doc/geany/*
-%doc /usr/share/man/man1/*
 
 %files lib
 %defattr(-,root,root,-)
@@ -324,6 +346,14 @@ rm -rf %{buildroot}
 /usr/lib64/geany/splitwindow.so
 /usr/lib64/libgeany.so.0
 /usr/lib64/libgeany.so.0.0.0
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/geany/COPYING
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/geany.1
 
 %files locales -f geany.lang
 %defattr(-,root,root,-)
