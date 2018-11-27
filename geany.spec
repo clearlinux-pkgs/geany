@@ -6,22 +6,22 @@
 #
 Name     : geany
 Version  : 1.33
-Release  : 24
+Release  : 25
 URL      : http://download.geany.org/geany-1.33.tar.gz
 Source0  : http://download.geany.org/geany-1.33.tar.gz
 Source99 : http://download.geany.org/geany-1.33.tar.gz.sig
 Summary  : A fast and lightweight IDE using GTK+
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ HPND
-Requires: geany-bin
-Requires: geany-lib
-Requires: geany-data
-Requires: geany-license
-Requires: geany-locales
-Requires: geany-man
+Requires: geany-bin = %{version}-%{release}
+Requires: geany-data = %{version}-%{release}
+Requires: geany-lib = %{version}-%{release}
+Requires: geany-license = %{version}-%{release}
+Requires: geany-locales = %{version}-%{release}
+Requires: geany-man = %{version}-%{release}
 BuildRequires : buildreq-golang
 BuildRequires : doxygen
-BuildRequires : gtk+-dev
+BuildRequires : gtk3-dev
 BuildRequires : intltool
 BuildRequires : lxml
 
@@ -45,9 +45,9 @@ Some features:
 %package bin
 Summary: bin components for the geany package.
 Group: Binaries
-Requires: geany-data
-Requires: geany-license
-Requires: geany-man
+Requires: geany-data = %{version}-%{release}
+Requires: geany-license = %{version}-%{release}
+Requires: geany-man = %{version}-%{release}
 
 %description bin
 bin components for the geany package.
@@ -64,10 +64,10 @@ data components for the geany package.
 %package dev
 Summary: dev components for the geany package.
 Group: Development
-Requires: geany-lib
-Requires: geany-bin
-Requires: geany-data
-Provides: geany-devel
+Requires: geany-lib = %{version}-%{release}
+Requires: geany-bin = %{version}-%{release}
+Requires: geany-data = %{version}-%{release}
+Provides: geany-devel = %{version}-%{release}
 
 %description dev
 dev components for the geany package.
@@ -76,7 +76,7 @@ dev components for the geany package.
 %package doc
 Summary: doc components for the geany package.
 Group: Documentation
-Requires: geany-man
+Requires: geany-man = %{version}-%{release}
 
 %description doc
 doc components for the geany package.
@@ -85,8 +85,8 @@ doc components for the geany package.
 %package lib
 Summary: lib components for the geany package.
 Group: Libraries
-Requires: geany-data
-Requires: geany-license
+Requires: geany-data = %{version}-%{release}
+Requires: geany-license = %{version}-%{release}
 
 %description lib
 lib components for the geany package.
@@ -124,8 +124,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532463513
-%configure --disable-static
+export SOURCE_DATE_EPOCH=1543325183
+%configure --disable-static --enable-gtk3
 make  %{?_smp_mflags}
 
 %check
@@ -136,11 +136,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1532463513
+export SOURCE_DATE_EPOCH=1543325183
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/geany
-cp COPYING %{buildroot}/usr/share/doc/geany/COPYING
-cp scintilla/License.txt %{buildroot}/usr/share/doc/geany/scintilla_License.txt
+mkdir -p %{buildroot}/usr/share/package-licenses/geany
+cp COPYING %{buildroot}/usr/share/package-licenses/geany/COPYING
+cp scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/scintilla_License.txt
 %make_install
 %find_lang geany
 
@@ -226,8 +226,10 @@ cp scintilla/License.txt %{buildroot}/usr/share/doc/geany/scintilla_License.txt
 /usr/share/geany/filedefs/filetypes.yaml
 /usr/share/geany/filedefs/filetypes.zephir
 /usr/share/geany/filetype_extensions.conf
+/usr/share/geany/geany-3.0.css
+/usr/share/geany/geany-3.20.css
+/usr/share/geany/geany.css
 /usr/share/geany/geany.glade
-/usr/share/geany/geany.gtkrc
 /usr/share/geany/snippets.conf
 /usr/share/geany/tags/entities.html.tags
 /usr/share/geany/tags/std.pas.tags
@@ -348,11 +350,12 @@ cp scintilla/License.txt %{buildroot}/usr/share/doc/geany/scintilla_License.txt
 /usr/lib64/libgeany.so.0.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/geany/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/geany/COPYING
+/usr/share/package-licenses/geany/scintilla_License.txt
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/geany.1
 
 %files locales -f geany.lang
