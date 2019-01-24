@@ -6,7 +6,7 @@
 #
 Name     : geany
 Version  : 1.34.1
-Release  : 27
+Release  : 28
 URL      : http://download.geany.org/geany-1.34.1.tar.gz
 Source0  : http://download.geany.org/geany-1.34.1.tar.gz
 Source99 : http://download.geany.org/geany-1.34.1.tar.gz.sig
