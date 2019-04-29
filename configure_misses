@@ -1,3 +1,6 @@
+Configure miss: direct.h usability
+Configure miss: direct.h presence
+Configure miss: whether _NSGetEnviron is declared
 Configure miss: Git revision
 Configure miss: whether binary relocation support should be enabled
 Configure miss: whether the force is with you

@@ -5,14 +5,14 @@
 # Source0 file verified with key 0x24CCD8550E5D1CAE (ban@ban.netlib.re)
 #
 Name     : geany
-Version  : 1.34.1
-Release  : 28
-URL      : http://download.geany.org/geany-1.34.1.tar.gz
-Source0  : http://download.geany.org/geany-1.34.1.tar.gz
-Source99 : http://download.geany.org/geany-1.34.1.tar.gz.sig
-Summary  : A fast and lightweight IDE using GTK+
+Version  : 1.35
+Release  : 29
+URL      : http://download.geany.org/geany-1.35.tar.gz
+Source0  : http://download.geany.org/geany-1.35.tar.gz
+Source99 : http://download.geany.org/geany-1.35.tar.gz.sig
+Summary  : Fast and lightweight IDE
 Group    : Development/Tools
-License  : GPL-2.0 GPL-2.0+ HPND
+License  : GPL-2.0 HPND
 Requires: geany-bin = %{version}-%{release}
 Requires: geany-data = %{version}-%{release}
 Requires: geany-lib = %{version}-%{release}
@@ -26,28 +26,22 @@ BuildRequires : intltool
 BuildRequires : lxml
 
 %description
-Geany is a small and fast integrated development environment with basic
-features and few dependencies to other packages or Desktop Environments.
-
-Some features:
-- Syntax highlighting
-- Code completion
-- Code folding
-- Construct completion/snippets
-- Auto-closing of XML and HTML tags
-- Call tips
-- Support for Many languages like C, Java, PHP, HTML, Python, Perl, Pascal
-- symbol lists and symbol name auto-completion
-- Code navigation
-- Simple project management
-- Plugin interface
+Geany - A fast and lightweight IDE
+----------------------------------
+About
+-----
+Geany is a small and lightweight integrated development environment.
+It was developed to provide a small and fast IDE, which has only a
+few dependencies from other packages. Another goal was to be as independent
+as possible from a special Desktop Environment like KDE or GNOME. So it
+is using only the GTK+ toolkit and therefore you need only the
+GTK+ runtime libraries to run Geany.
 
 %package bin
 Summary: bin components for the geany package.
 Group: Binaries
 Requires: geany-data = %{version}-%{release}
 Requires: geany-license = %{version}-%{release}
-Requires: geany-man = %{version}-%{release}
 
 %description bin
 bin components for the geany package.
@@ -68,6 +62,7 @@ Requires: geany-lib = %{version}-%{release}
 Requires: geany-bin = %{version}-%{release}
 Requires: geany-data = %{version}-%{release}
 Provides: geany-devel = %{version}-%{release}
+Requires: geany = %{version}-%{release}
 
 %description dev
 dev components for the geany package.
@@ -117,14 +112,14 @@ man components for the geany package.
 
 
 %prep
-%setup -q -n geany-1.34.1
+%setup -q -n geany-1.35
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1546887661
+export SOURCE_DATE_EPOCH=1556544962
 %configure --disable-static --enable-gtk3
 make  %{?_smp_mflags}
 
@@ -136,7 +131,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1546887661
+export SOURCE_DATE_EPOCH=1556544962
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/geany
 cp COPYING %{buildroot}/usr/share/package-licenses/geany/COPYING
