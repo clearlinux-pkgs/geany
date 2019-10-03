@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x24CCD8550E5D1CAE (ban@ban.netlib.re)
 #
 Name     : geany
-Version  : 1.35
-Release  : 29
-URL      : http://download.geany.org/geany-1.35.tar.gz
-Source0  : http://download.geany.org/geany-1.35.tar.gz
-Source99 : http://download.geany.org/geany-1.35.tar.gz.sig
-Summary  : Fast and lightweight IDE
+Version  : 1.36
+Release  : 30
+URL      : https://download.geany.org/geany-1.36.tar.gz
+Source0  : https://download.geany.org/geany-1.36.tar.gz
+Source1 : https://download.geany.org/geany-1.36.tar.gz.sig
+Summary  : A fast and lightweight IDE using GTK+
 Group    : Development/Tools
 License  : GPL-2.0 HPND
 Requires: geany-bin = %{version}-%{release}
@@ -112,26 +112,31 @@ man components for the geany package.
 
 
 %prep
-%setup -q -n geany-1.35
+%setup -q -n geany-1.36
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556544962
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570067136
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --enable-gtk3
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1556544962
+export SOURCE_DATE_EPOCH=1570067136
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/geany
 cp COPYING %{buildroot}/usr/share/package-licenses/geany/COPYING
@@ -157,8 +162,13 @@ cp scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/scintilla
 /usr/share/geany/filedefs/filetypes.Cython.conf
 /usr/share/geany/filedefs/filetypes.Genie.conf
 /usr/share/geany/filedefs/filetypes.Graphviz.conf
+/usr/share/geany/filedefs/filetypes.Groovy.conf
 /usr/share/geany/filedefs/filetypes.JSON.conf
+/usr/share/geany/filedefs/filetypes.Kotlin.conf
+/usr/share/geany/filedefs/filetypes.Nim.conf
 /usr/share/geany/filedefs/filetypes.Scala.conf
+/usr/share/geany/filedefs/filetypes.Swift.conf
+/usr/share/geany/filedefs/filetypes.TypeScript.conf
 /usr/share/geany/filedefs/filetypes.abaqus
 /usr/share/geany/filedefs/filetypes.abc
 /usr/share/geany/filedefs/filetypes.actionscript
