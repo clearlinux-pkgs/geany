@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x24CCD8550E5D1CAE (ban@ban.netlib.re)
 #
 Name     : geany
-Version  : 1.36
-Release  : 31
-URL      : https://download.geany.org/geany-1.36.tar.gz
-Source0  : https://download.geany.org/geany-1.36.tar.gz
-Source1 : https://download.geany.org/geany-1.36.tar.gz.sig
+Version  : 1.37
+Release  : 32
+URL      : https://download.geany.org/geany-1.37.tar.gz
+Source0  : https://download.geany.org/geany-1.37.tar.gz
+Source1  : https://download.geany.org/geany-1.37.tar.gz.sig
 Summary  : A fast and lightweight IDE using GTK+
 Group    : Development/Tools
 License  : GPL-2.0 HPND
@@ -112,18 +112,19 @@ man components for the geany package.
 
 
 %prep
-%setup -q -n geany-1.36
+%setup -q -n geany-1.37
+cd %{_builddir}/geany-1.37
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570067136
+export SOURCE_DATE_EPOCH=1603726710
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --enable-gtk3
 make  %{?_smp_mflags}
@@ -133,14 +134,14 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1570067136
+export SOURCE_DATE_EPOCH=1603726710
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/geany
-cp COPYING %{buildroot}/usr/share/package-licenses/geany/COPYING
-cp scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/scintilla_License.txt
+cp %{_builddir}/geany-1.37/COPYING %{buildroot}/usr/share/package-licenses/geany/1bba544d91de647b97f45a31e63540d6d5d06096
+cp %{_builddir}/geany-1.37/scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/f06de8b018290a99ff91fa2f136ad3b859ae8543
 %make_install
 %find_lang geany
 
@@ -176,6 +177,7 @@ cp scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/scintilla
 /usr/share/geany/filedefs/filetypes.asciidoc
 /usr/share/geany/filedefs/filetypes.asm
 /usr/share/geany/filedefs/filetypes.batch
+/usr/share/geany/filedefs/filetypes.bibtex
 /usr/share/geany/filedefs/filetypes.c
 /usr/share/geany/filedefs/filetypes.caml
 /usr/share/geany/filedefs/filetypes.cmake
@@ -221,6 +223,7 @@ cp scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/scintilla
 /usr/share/geany/filedefs/filetypes.ruby
 /usr/share/geany/filedefs/filetypes.rust
 /usr/share/geany/filedefs/filetypes.sh
+/usr/share/geany/filedefs/filetypes.smalltalk
 /usr/share/geany/filedefs/filetypes.sql
 /usr/share/geany/filedefs/filetypes.tcl
 /usr/share/geany/filedefs/filetypes.txt2tags
@@ -317,6 +320,7 @@ cp scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/scintilla
 /usr/include/geany/pluginutils.h
 /usr/include/geany/prefs.h
 /usr/include/geany/project.h
+/usr/include/geany/scintilla/Compat.h
 /usr/include/geany/scintilla/SciLexer.h
 /usr/include/geany/scintilla/Sci_Position.h
 /usr/include/geany/scintilla/Scintilla.h
@@ -356,8 +360,8 @@ cp scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/scintilla
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/geany/COPYING
-/usr/share/package-licenses/geany/scintilla_License.txt
+/usr/share/package-licenses/geany/1bba544d91de647b97f45a31e63540d6d5d06096
+/usr/share/package-licenses/geany/f06de8b018290a99ff91fa2f136ad3b859ae8543
 
 %files man
 %defattr(0644,root,root,0755)
