@@ -1,1 +1,2 @@
 --enable-gtk3
+--disable-api-docs

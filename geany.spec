@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x24CCD8550E5D1CAE (ban@ban.netlib.re)
 #
 Name     : geany
-Version  : 1.37.1
-Release  : 33
-URL      : https://download.geany.org/geany-1.37.1.tar.gz
-Source0  : https://download.geany.org/geany-1.37.1.tar.gz
-Source1  : https://download.geany.org/geany-1.37.1.tar.gz.sig
+Version  : 1.38
+Release  : 34
+URL      : https://download.geany.org/geany-1.38.tar.gz
+Source0  : https://download.geany.org/geany-1.38.tar.gz
+Source1  : https://download.geany.org/geany-1.38.tar.gz.sig
 Summary  : A fast and lightweight IDE using GTK+
 Group    : Development/Tools
 License  : GPL-2.0 HPND
@@ -19,8 +19,6 @@ Requires: geany-lib = %{version}-%{release}
 Requires: geany-license = %{version}-%{release}
 Requires: geany-locales = %{version}-%{release}
 Requires: geany-man = %{version}-%{release}
-BuildRequires : buildreq-golang
-BuildRequires : doxygen
 BuildRequires : gtk3-dev
 BuildRequires : intltool
 BuildRequires : lxml
@@ -112,21 +110,22 @@ man components for the geany package.
 
 
 %prep
-%setup -q -n geany-1.37.1
-cd %{_builddir}/geany-1.37.1
+%setup -q -n geany-1.38
+cd %{_builddir}/geany-1.38
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605463374
+export SOURCE_DATE_EPOCH=1633819386
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
 export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
-%configure --disable-static --enable-gtk3
+%configure --disable-static --enable-gtk3 \
+--disable-api-docs
 make  %{?_smp_mflags}
 
 %check
@@ -137,11 +136,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1605463374
+export SOURCE_DATE_EPOCH=1633819386
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/geany
-cp %{_builddir}/geany-1.37.1/COPYING %{buildroot}/usr/share/package-licenses/geany/1bba544d91de647b97f45a31e63540d6d5d06096
-cp %{_builddir}/geany-1.37.1/scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/f06de8b018290a99ff91fa2f136ad3b859ae8543
+cp %{_builddir}/geany-1.38/COPYING %{buildroot}/usr/share/package-licenses/geany/1bba544d91de647b97f45a31e63540d6d5d06096
+cp %{_builddir}/geany-1.38/scintilla/License.txt %{buildroot}/usr/share/package-licenses/geany/f06de8b018290a99ff91fa2f136ad3b859ae8543
 %make_install
 %find_lang geany
 
@@ -166,6 +165,7 @@ cp %{_builddir}/geany-1.37.1/scintilla/License.txt %{buildroot}/usr/share/packag
 /usr/share/geany/filedefs/filetypes.Groovy.conf
 /usr/share/geany/filedefs/filetypes.JSON.conf
 /usr/share/geany/filedefs/filetypes.Kotlin.conf
+/usr/share/geany/filedefs/filetypes.Meson.conf
 /usr/share/geany/filedefs/filetypes.Nim.conf
 /usr/share/geany/filedefs/filetypes.Scala.conf
 /usr/share/geany/filedefs/filetypes.Swift.conf
@@ -204,6 +204,7 @@ cp %{_builddir}/geany-1.37.1/scintilla/License.txt %{buildroot}/usr/share/packag
 /usr/share/geany/filedefs/filetypes.html
 /usr/share/geany/filedefs/filetypes.java
 /usr/share/geany/filedefs/filetypes.javascript
+/usr/share/geany/filedefs/filetypes.julia
 /usr/share/geany/filedefs/filetypes.latex
 /usr/share/geany/filedefs/filetypes.lisp
 /usr/share/geany/filedefs/filetypes.lua
@@ -309,8 +310,6 @@ cp %{_builddir}/geany-1.37.1/scintilla/License.txt %{buildroot}/usr/share/packag
 /usr/include/geany/geanyfunctions.h
 /usr/include/geany/geanyplugin.h
 /usr/include/geany/gtkcompat.h
-/usr/include/geany/gtkdoc/geany-gtkdoc.h
-/usr/include/geany/gtkdoc/geany-sciwrappers-gtkdoc.h
 /usr/include/geany/highlighting.h
 /usr/include/geany/keybindings.h
 /usr/include/geany/main.h
