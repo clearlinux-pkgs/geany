@@ -6,7 +6,7 @@
 #
 Name     : geany
 Version  : 1.38
-Release  : 34
+Release  : 35
 URL      : https://download.geany.org/geany-1.38.tar.gz
 Source0  : https://download.geany.org/geany-1.38.tar.gz
 Source1  : https://download.geany.org/geany-1.38.tar.gz.sig
@@ -21,7 +21,7 @@ Requires: geany-locales = %{version}-%{release}
 Requires: geany-man = %{version}-%{release}
 BuildRequires : gtk3-dev
 BuildRequires : intltool
-BuildRequires : lxml
+BuildRequires : pypi-lxml
 
 %description
 Geany - A fast and lightweight IDE
@@ -118,7 +118,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633819386
+export SOURCE_DATE_EPOCH=1645122454
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -136,7 +136,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1633819386
+export SOURCE_DATE_EPOCH=1645122454
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/geany
 cp %{_builddir}/geany-1.38/COPYING %{buildroot}/usr/share/package-licenses/geany/1bba544d91de647b97f45a31e63540d6d5d06096
