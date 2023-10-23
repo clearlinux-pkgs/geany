@@ -1,10 +1,22 @@
 Configure miss: Git revision
-Configure miss: direct.h presence
-Configure miss: direct.h usability
+Configure miss: Git revision
+Configure miss: g++ option to enable C++11 features
+Configure miss: g++ option to enable C++11 features
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: rst2html
 Configure miss: rst2html
 Configure miss: rst2html.py
+Configure miss: rst2html.py
+Configure miss: rst2pdf
 Configure miss: rst2pdf
 Configure miss: rst2pdf.py
+Configure miss: rst2pdf.py
+Configure miss: whether _NSGetEnviron is declared
 Configure miss: whether _NSGetEnviron is declared
 Configure miss: whether binary relocation support should be enabled
+Configure miss: whether binary relocation support should be enabled
 Configure miss: whether the force is with you
+Configure miss: whether the force is with you
+Configure miss: x86_64-generic-linux-gnu-file
+Configure miss: x86_64-generic-linux-gnu-file
